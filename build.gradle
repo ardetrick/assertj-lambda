@@ -1,0 +1,27 @@
+plugins {
+    id "io.freefair.lombok" version '6.5.1'
+}
+
+allprojects {
+    group = 'com.ardetrick.lambda.assertions'
+    version = '1.0-SNAPSHOT'
+
+    repositories {
+        mavenCentral()
+    }
+}
+
+subprojects {
+    apply plugin: 'java-library'
+    apply plugin: 'io.freefair.lombok'
+
+    tasks.named('test') {
+        useJUnitPlatform()
+    }
+
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(17)
+        }
+    }
+}
